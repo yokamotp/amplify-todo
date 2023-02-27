@@ -1,0 +1,22 @@
+{
+  "api": {
+    "amplifyTodoGql": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-02-27T07:31:29.885Z",
+              "apiKeyExpirationDays": 365,
+              "description": "amplifyTodoGql AuthKey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  }
+}
