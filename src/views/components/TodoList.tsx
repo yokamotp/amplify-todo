@@ -3,7 +3,7 @@ import React from 'react'
 import TodoItem from './TodoItem'
 
 const TodoList: React.VFC = () => {
-  const todoList= [
+  const todoList:any= [
     {id: 'aaa', content: 'aaa', isDone: true},
     {id: 'bbb', content: 'bbb', isDone: true},
     {id: 'ccc', content: 'ccc', isDone: true},
@@ -15,6 +15,7 @@ const TodoList: React.VFC = () => {
     {id: 'iii', content: 'iii', isDone: false},
     {id: 'jjj', content: 'jjj', isDone: false},
     {id: 'kkk', content: 'kkk', isDone: false},
+
 ]
 
   return (
@@ -35,10 +36,10 @@ const TodoList: React.VFC = () => {
         overflow='scroll'
       >
         {todoList.length === 0 ?
-        (<Text>TodoListはありません。</Text>):
+        (<Text align='center' fontWeight='bold' fontSize='lg'>TodoListはありません。</Text>):
         (
-            todoList.map((item)=>{
-                return  <TodoItem id={item.id} content={item.content} isDone={item.isDone}></TodoItem>
+            todoList.map((item:any)=>{
+                return  <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone}></TodoItem>
             })
         )}
       </VStack>
