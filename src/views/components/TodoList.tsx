@@ -1,8 +1,8 @@
 import { Center, Flex, Heading, StackDivider, VStack, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import TodoItem from './TodoItem'
-import { useAppSelector } from '../../stores/hooks';
-import { selectTodoList } from '../../stores/slices/todo/todoSlices';
+import { useAppDispatch, useAppSelector } from '../../stores/hooks';
+import { fetchTodoListAsync, selectTodoList } from '../../stores/slices/todo/todoSlices';
 
 
 const TodoList: React.VFC = () => {
@@ -11,6 +11,14 @@ const TodoList: React.VFC = () => {
     //     { "id": "001", "content": "aaa", "isDone": true },
     // ]
     console.log({ todoList });
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        const fetchTodoList = async () => {
+            await dispatch(fetchTodoListAsync());
+        };
+        fetchTodoList();
+    }, [dispatch]);
+
     return (
         <Flex flexDir='column'>
             <Center mb={8}>
