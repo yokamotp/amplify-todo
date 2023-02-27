@@ -1,4 +1,4 @@
-import { Center, Flex, Heading, StackDivider, VStack } from '@chakra-ui/react'
+import { Center, Flex, Heading, StackDivider, VStack, Text } from '@chakra-ui/react'
 import React from 'react'
 import TodoItem from './TodoItem'
 
@@ -8,7 +8,13 @@ const TodoList: React.VFC = () => {
     {id: 'bbb', content: 'bbb', isDone: true},
     {id: 'ccc', content: 'ccc', isDone: true},
     {id: 'ddd', content: 'ddd', isDone: true},
-    {id: 'eee', content: 'eee', isDone: true},
+    {id: 'eee', content: 'eee', isDone: false},
+    {id: 'fff', content: 'fff', isDone: false},
+    {id: 'ggg', content: 'ggg', isDone: false},
+    {id: 'hhh', content: 'hhh', isDone: false},
+    {id: 'iii', content: 'iii', isDone: false},
+    {id: 'jjj', content: 'jjj', isDone: false},
+    {id: 'kkk', content: 'kkk', isDone: false},
 ]
 
   return (
@@ -28,9 +34,13 @@ const TodoList: React.VFC = () => {
         maxH='65vh'
         overflow='scroll'
       >
-        {todoList.map((item)=>{
-          return  <TodoItem id={item.id} content={item.content} isDone={item.isDone}></TodoItem>
-        })}
+        {todoList.length === 0 ?
+        (<Text>TodoListはありません。</Text>):
+        (
+            todoList.map((item)=>{
+                return  <TodoItem id={item.id} content={item.content} isDone={item.isDone}></TodoItem>
+            })
+        )}
       </VStack>
     </Flex>
   )
