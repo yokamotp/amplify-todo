@@ -7,7 +7,7 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 // import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
 import { useAppDispatch } from '../../stores/hooks';
 import { deleteTodoApi, updateTodoApi } from '../../stores/slices/todo/todoAPI';
-import Picture from './Picture';
+import PictureList from './PictureList';
 
 
 type Props = {
@@ -38,7 +38,7 @@ const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
         // dispatch(deleteTodo(id));
     }
     return (
-        <>
+        <div>
             <Flex w='100%' align='center' justify='space-between'>
                 <Flex align='center'>
                     <Icon
@@ -59,8 +59,8 @@ const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
                     <Icon as={BsFillTrashFill} color='pink' cursor='pointer' h={5} onClick={handleDelete} />
                 </Flex>
             </Flex>
-            <Picture id={id}></Picture>
-        </>
+            <PictureList id={id}></PictureList>
+        </div>
     )
 }
 
