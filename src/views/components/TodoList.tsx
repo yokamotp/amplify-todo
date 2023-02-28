@@ -1,25 +1,34 @@
 import { Center, Flex, Heading, StackDivider, VStack, Text } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 import { deleteTodoRealTime, fetchTodoListAsync, fetchTodoRealTime, selectTodoList, updateTodoRealTime } from '../../stores/slices/todo/todoSlices';
 import { DataStore } from 'aws-amplify';
 import { Todo } from '../../models';
+import { VscFoldDown } from 'react-icons/vsc'
 
+type Props = {
+    title: string;
+    defaultDispOfList: boolean;
+    isDoneList: boolean;
+}
 
-const TodoList: React.VFC = () => {
+const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) => {
     const todoList = useAppSelector(selectTodoList);
     // const todoList = [
     //     { "id": "001", "content": "aaa", "isDone": true },
     // ]
     console.log({ todoList });
     const dispatch = useAppDispatch();
+    const [isDispTodoList, setDispTodoList] = useState<boolean>(defaultDispOfList);
+
+
     useEffect(() => {
         const fetchTodoList = async () => {
             await dispatch(fetchTodoListAsync());
         };
         fetchTodoList();
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         const subscription = DataStore.observe(Todo).subscribe((msg) => {
@@ -39,34 +48,43 @@ const TodoList: React.VFC = () => {
         return () => {
             subscription.unsubscribe();
         }
-    }, [])
+    }, [dispatch])
 
 
     return (
         <Flex flexDir='column'>
-            <Center mb={8}>
-                <Heading>
-                    TodoList
+            <Center mb={2}>
+                <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
+                    <Flex>
+                        {title}
+                    </Flex>
                 </Heading>
             </Center>
-            <VStack divider={<StackDivider borderColor='gray.200' />}
-                align='stretch'
-                w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}
-                border='2px'
-                borderColor='gray.300'
-                borderRadius='md'
-                p={4}
-                maxH='65vh'
-                overflow='scroll'
-            >
-                {todoList.length === 0 ?
-                    (<Text align='center' fontWeight='bold' fontSize='lg'>TodoListはありません。</Text>) :
-                    (
-                        todoList.map((item) => {
-                            return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} />
-                        })
-                    )}
-            </VStack>
+            {isDispTodoList && (
+                <VStack divider={<StackDivider borderColor='gray.200' />}
+                    align='stretch'
+                    w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}
+                    border='2px'
+                    borderColor='gray.300'
+                    borderRadius='md'
+                    p={4}
+                    maxH='65vh'
+                    overflow='scroll'
+                >
+                    {todoList.length === 0 ?
+                        (<Text align='center' fontWeight='bold' fontSize='lg'>TodoListはありません。</Text>) :
+                        (
+                            todoList
+                                .filter((item) => {
+                                    return item.isDone === isDoneList;
+                                })
+                                .map((item) => {
+                                    return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} />
+                                })
+                        )}
+                </VStack>
+
+            )}
         </Flex>
     )
 }
