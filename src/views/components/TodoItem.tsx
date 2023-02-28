@@ -3,7 +3,7 @@ import { Flex, Text, Icon } from '@chakra-ui/react';
 import React from 'react';
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from 'react-icons/ri';
 import { BsFillTrashFill } from 'react-icons/bs';
-import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
+// import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
 import { useAppDispatch } from '../../stores/hooks';
 import { deleteTodoApi, updateTodoApi } from '../../stores/slices/todo/todoAPI';
 

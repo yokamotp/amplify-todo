@@ -2,7 +2,9 @@ import { Center, Flex, Heading, StackDivider, VStack, Text } from '@chakra-ui/re
 import React, { useEffect } from 'react'
 import TodoItem from './TodoItem'
 import { useAppDispatch, useAppSelector } from '../../stores/hooks';
-import { fetchTodoListAsync, selectTodoList } from '../../stores/slices/todo/todoSlices';
+import { deleteTodoRealTime, fetchTodoListAsync, fetchTodoRealTime, selectTodoList, updateTodoRealTime } from '../../stores/slices/todo/todoSlices';
+import { DataStore } from 'aws-amplify';
+import { Todo } from '../../models';
 
 
 const TodoList: React.VFC = () => {
@@ -18,6 +20,27 @@ const TodoList: React.VFC = () => {
         };
         fetchTodoList();
     }, [dispatch]);
+
+    useEffect(() => {
+        const subscription = DataStore.observe(Todo).subscribe((msg) => {
+            switch (msg.opType) {
+                case 'INSERT':
+                    dispatch(fetchTodoRealTime(msg.element));
+                    break;
+                case 'UPDATE':
+                    dispatch(updateTodoRealTime(msg.element));
+                    break;
+                case 'DELETE':
+                    dispatch(deleteTodoRealTime(msg.element));
+                    break;
+            }
+        });
+
+        return () => {
+            subscription.unsubscribe();
+        }
+    }, [dispatch])
+
 
     return (
         <Flex flexDir='column'>
