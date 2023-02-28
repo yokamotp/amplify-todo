@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, IconButton, Image, Stack, StackDivider, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, IconButton, Image } from '@chakra-ui/react';
 import React from 'react'
 import { AiOutlineCamera, AiOutlinePicture } from 'react-icons/ai'
 

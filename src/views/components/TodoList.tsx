@@ -1,11 +1,10 @@
-import { Center, Flex, Heading, StackDivider, VStack, Text } from '@chakra-ui/react'
+import { Center, Flex, Heading, StackDivider, VStack, Text, Container } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem'
 import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 import { deleteTodoRealTime, fetchTodoListAsync, fetchTodoRealTime, selectTodoList, updateTodoRealTime } from '../../stores/slices/todo/todoSlices';
 import { DataStore } from 'aws-amplify';
 import { Todo } from '../../models';
-import { VscFoldDown } from 'react-icons/vsc'
 
 type Props = {
     title: string;
@@ -52,7 +51,7 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
 
 
     return (
-        <Flex flexDir='column'>
+        <Flex flexDir='column' w='100%'>
             <Center mb={2}>
                 <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
                     <Flex>
@@ -86,6 +85,7 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
 
             )}
         </Flex>
+
     )
 }
 

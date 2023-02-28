@@ -1,9 +1,8 @@
 // import  from '@chakra-ui/icon/dist/icon';
-import { Flex, Text, Icon, Image, Box } from '@chakra-ui/react';
+import { Flex, Text, Icon } from '@chakra-ui/react';
 // import React, { useEffect } from 'react';
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from 'react-icons/ri';
 import { BsFillTrashFill } from 'react-icons/bs';
-import { AiOutlinePlusCircle } from 'react-icons/ai';
 // import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
 // import { useAppDispatch } from '../../stores/hooks';
 import { deleteTodoApi, updateTodoApi } from '../../stores/slices/todo/todoAPI';

@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormErrorMessage, Input } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, Input } from '@chakra-ui/react';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { createTodoApi } from '../../stores/slices/todo/todoAPI';
