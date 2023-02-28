@@ -5,7 +5,7 @@ import TodoList from '../components/TodoList'
 const Main = () => {
     return (
         <div>
-            <TodoList title='TodoList' isDoneList={false} defaultDispOfList={true} />;
+            <TodoList title='TodoList' isDoneList={false} defaultDispOfList={true} />
             <AddTodo />
             <TodoList title='DoneList' isDoneList={true} defaultDispOfList={false} />
         </div>
