@@ -17,7 +17,7 @@ type Props = {
 }
 
 const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     const handleUpdate = async () => {
         try {
             const switchIsDone = !isDone;

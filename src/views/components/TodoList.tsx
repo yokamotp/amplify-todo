@@ -19,7 +19,7 @@ const TodoList: React.VFC = () => {
             await dispatch(fetchTodoListAsync());
         };
         fetchTodoList();
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         const subscription = DataStore.observe(Todo).subscribe((msg) => {
@@ -39,7 +39,7 @@ const TodoList: React.VFC = () => {
         return () => {
             subscription.unsubscribe();
         }
-    }, [dispatch])
+    }, [])
 
 
     return (
