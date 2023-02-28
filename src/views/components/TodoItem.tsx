@@ -1,11 +1,13 @@
 // import  from '@chakra-ui/icon/dist/icon';
-import { Flex, Text, Icon } from '@chakra-ui/react';
+import { Flex, Text, Icon, Image, Box } from '@chakra-ui/react';
 import React from 'react';
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from 'react-icons/ri';
 import { BsFillTrashFill } from 'react-icons/bs';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 // import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
 import { useAppDispatch } from '../../stores/hooks';
 import { deleteTodoApi, updateTodoApi } from '../../stores/slices/todo/todoAPI';
+import Picture from './Picture';
 
 
 type Props = {
@@ -36,23 +38,29 @@ const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
         // dispatch(deleteTodo(id));
     }
     return (
-        <Flex w='100%' align='center' justify='space-between'>
-            <Flex align='center'>
-                <Icon
-                    as={isDone ? RiCheckboxCircleFill : RiCheckboxBlankCircleLine}
-                    color='teal'
-                    cursor='pointer'
-                    h={6}
-                    mr={2}
-                    w={6}
-                    onClick={handleUpdate}
-                />
+        <>
+            <Flex w='100%' align='center' justify='space-between'>
+                <Flex align='center'>
+                    <Icon
+                        as={isDone ? RiCheckboxCircleFill : RiCheckboxBlankCircleLine}
+                        color='teal'
+                        cursor='pointer'
+                        h={6}
+                        mr={2}
+                        w={6}
+                        onClick={handleUpdate}
+                    />
 
-                <Text fontSize='xl'>{content}</Text>
+                    <Text fontSize='xl'>{content}</Text>
 
+                </Flex>
+                <Flex>
+                    <Icon as={AiOutlinePlusCircle} color='pink' cursor='pointer' h={5} onClick={handleDelete} />
+                    <Icon as={BsFillTrashFill} color='pink' cursor='pointer' h={5} onClick={handleDelete} />
+                </Flex>
             </Flex>
-            <Icon as={BsFillTrashFill} color='pink' cursor='pointer' h={5} onClick={handleDelete} />
-        </Flex>
+            <Picture id={id}></Picture>
+        </>
     )
 }
 
