@@ -1,3 +1,8 @@
+type Picture @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  src: String!
+}
+
 type Todo @model @auth(rules: [{allow: public}]) {
   id: ID!
   content: String!
