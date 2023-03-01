@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Webcam, { WebcamHandles } from "./Webcam";
 import useWindowSize from "./useWindowSize";
 import useWindowEvent from "./useWindowEvent";
+import { AiOutlineCamera } from "react-icons/ai";
+import { IconButton } from "@chakra-ui/react";
 
 const WindowSizedDialog = styled.div`
   position: fixed;
@@ -79,7 +81,14 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
         <WindowSizedDialog>
             <WindowSizedDialogInner>
                 <Webcam ref={webcamRef} width={width} height={height} />
-                <CaptureButton onClick={capture}>capture</CaptureButton>
+                <IconButton
+                    aria-label='Take Photo'
+                    colorScheme='red'
+                    size='lg'
+                    marginBottom={1}
+                    icon={<AiOutlineCamera />}
+                    onClick={capture}
+                />
             </WindowSizedDialogInner>
         </WindowSizedDialog>
     );

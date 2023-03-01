@@ -51,7 +51,6 @@ const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
                     />
 
                     <Text fontSize='xl'>{content}</Text>
-
                 </Flex>
                 <Flex>
                     <Icon as={BsFillTrashFill} color='pink' cursor='pointer' h={5} onClick={handleDelete} />

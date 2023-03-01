@@ -1,7 +1,7 @@
 import { Box, Flex, HStack, IconButton, Image } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import { AiOutlineCamera, AiOutlinePicture } from 'react-icons/ai'
-import WebcamDialog from "../../WebcamDialog";
+import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 type Props = {
     id: string;
@@ -12,10 +12,6 @@ const PictureList: React.VFC<Props> = ({ id }) => {
     const [openDialog, setOpenDialog] = useState(false);
     const [imageSrc, setImageSrc] = useState<string | null>(null);
 
-    const takePhotoHandler = () => {
-        return ""
-    }
-
     return (
         <Box
             p={2}
@@ -25,6 +21,11 @@ const PictureList: React.VFC<Props> = ({ id }) => {
             border='2px'
         >
             <Flex direction='row'>
+                <WebcamDialog
+                    open={openDialog}
+                    onClose={() => setOpenDialog(false)}
+                    setImageSrc={setImageSrc}
+                />
                 <Flex direction='column'
                     marginRight={1}>
                     <IconButton
@@ -43,35 +44,35 @@ const PictureList: React.VFC<Props> = ({ id }) => {
                         size='lg'
                         icon={<AiOutlinePicture />} />
                 </Flex>
-                <WebcamDialog
-                    open={openDialog}
-                    onClose={() => setOpenDialog(false)}
-                    setImageSrc={setImageSrc}
-                />
                 <HStack
                     align='stretch'
                     w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}
                     overflow='scroll'
                     spacing='4px'
                 >
+                    {imageSrc && (
+                        <Image
+                            boxSize='100px'
+                            objectFit='cover'
+                            src={imageSrc}
+                            alt='Dan Abramov'
+                        />
+                    )}
+                    <Image
+                        boxSize='100px'
+                        objectFit='cover'
+                        src='https://bit.ly/dan-abramov'
+                        alt='Dan Abramov'
+                    />
+                    <Image
+                        boxSize='100px'
+                        objectFit='cover'
+                        src='https://bit.ly/dan-abramov'
+                        alt='Dan Abramov'
+                    />
+                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
+                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
 
-                    <Image
-                        boxSize='100px'
-                        objectFit='cover'
-                        src='https://bit.ly/dan-abramov'
-                        alt='Dan Abramov'
-                    />
-                    <Image
-                        boxSize='100px'
-                        objectFit='cover'
-                        src='https://bit.ly/dan-abramov'
-                        alt='Dan Abramov'
-                    />
-                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
-                    <Image boxSize='100px' src='https://bit.ly/dan-abramov' alt='Dan Abramov' />
                 </HStack>
             </Flex>
         </Box>
