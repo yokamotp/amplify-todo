@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 import { deleteTodoRealTime, fetchTodoListAsync, fetchTodoRealTime, selectTodoList, updateTodoRealTime } from '../../stores/slices/todo/todoSlices';
 import { DataStore } from 'aws-amplify';
 import { Todo } from '../../models';
+import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 type Props = {
     title: string;
@@ -14,13 +15,11 @@ type Props = {
 
 const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) => {
     const todoList = useAppSelector(selectTodoList);
-    // const todoList = [
-    //     { "id": "001", "content": "aaa", "isDone": true },
-    // ]
-    console.log({ todoList });
+    const [openDialog, setOpenDialog] = useState(false);
+    const [imageSrc, setImageSrc] = useState<string | null>(null);
+
     const dispatch = useAppDispatch();
     const [isDispTodoList, setDispTodoList] = useState<boolean>(defaultDispOfList);
-
 
     useEffect(() => {
         const fetchTodoList = async () => {
@@ -52,6 +51,11 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
 
     return (
         <Flex flexDir='column' w='100%'>
+            <WebcamDialog
+                open={openDialog}
+                onClose={() => setOpenDialog(false)}
+                setImageSrc={setImageSrc}
+            />
             <Center mb={2}>
                 <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
                     <Flex>
@@ -78,7 +82,7 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
                                     return item.isDone === isDoneList;
                                 })
                                 .map((item) => {
-                                    return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} />
+                                    return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} setOpenDialog={setOpenDialog} />
                                 })
                         )}
                 </VStack>

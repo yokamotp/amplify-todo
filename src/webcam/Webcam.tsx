@@ -7,6 +7,7 @@ import {
     ForwardRefRenderFunction,
     forwardRef
 } from "react";
+import { AspectRatio } from '@chakra-ui/react';
 
 
 type Props = {
@@ -95,6 +96,7 @@ const Webcam: ForwardRefRenderFunction<WebcamHandles, Props> = (
     }, [getStream]);
 
     return <video ref={videoRef} playsInline width={width} height={height} />;
+
 };
 
 export default forwardRef(Webcam);

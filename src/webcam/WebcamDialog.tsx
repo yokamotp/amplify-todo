@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Webcam, { WebcamHandles } from "./Webcam";
 import useWindowSize from "./useWindowSize";
 import useWindowEvent from "./useWindowEvent";
+import { IconButton } from "@chakra-ui/react";
+import { AiOutlineCamera, AiOutlinePicture } from "react-icons/ai";
 
 const WindowSizedDialog = styled.div`
   position: fixed;
@@ -51,27 +53,34 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
             return;
         }
         setIsLandscape(false);
+
     };
 
     useWindowEvent("orientationchange", orientationChanged, []);
 
     const capture = () => {
+        console.log("撮影！！！！")
         if (!webcamRef.current) {
+            // console.log('XXXX if (!webcamRef.current)')
             return;
         }
         const newImageSrc = webcamRef.current.capture();
         if (!newImageSrc) {
+            // console.log('XXXX if (!newImageSrc) ')
             return;
         }
         setImageSrc(newImageSrc);
+        console.log("撮影画像のSrc" + newImageSrc)
         onClose();
     };
 
     if (!open || width === undefined || height === undefined) {
+        // console.log('xxxx (!open || width === undefined || height === undefined)')
         return null;
     }
 
     if (isLandscape) {
+        // console.log('xxxx  (isLandscape)')
         return <div>縦向きにしてください</div>;
     }
 
@@ -79,7 +88,15 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
         <WindowSizedDialog>
             <WindowSizedDialogInner>
                 <Webcam ref={webcamRef} width={width} height={height} />
-                <CaptureButton onClick={capture}>capture</CaptureButton>
+                <IconButton
+                    aria-label='Take Photo'
+                    colorScheme='red'
+                    size='lg'
+                    marginBottom={1}
+                    icon={<AiOutlineCamera />}
+                    onClick={capture}
+                />
+                {/* <CaptureButton onClick={capture}>capture</CaptureButton> */}
             </WindowSizedDialogInner>
         </WindowSizedDialog>
     );

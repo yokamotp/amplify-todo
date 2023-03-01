@@ -13,9 +13,10 @@ type Props = {
     id: string;
     content: string;
     isDone: boolean;
+    setOpenDialog: any;
 }
 
-const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
+const TodoItem: React.VFC<Props> = ({ id, content, isDone, setOpenDialog }) => {
     // const dispatch = useAppDispatch();
     const handleUpdate = async () => {
         try {
@@ -57,7 +58,7 @@ const TodoItem: React.VFC<Props> = ({ id, content, isDone }) => {
                     <Icon as={BsFillTrashFill} color='pink' cursor='pointer' h={5} onClick={handleDelete} />
                 </Flex>
             </Flex>
-            <PictureList id={id}></PictureList>
+            <PictureList id={id} setOpenDialog={setOpenDialog}></PictureList>
         </div>
     )
 }
