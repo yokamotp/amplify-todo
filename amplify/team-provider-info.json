@@ -14,6 +14,21 @@
     "categories": {
       "api": {
         "amplifyTodoGql": {}
+      },
+      "auth": {
+        "amplifytodo": {
+          "userPoolId": "ap-northeast-1_cDJJo5dGk",
+          "userPoolName": "linegenpov36c4221e2_userpool_6c4221e2-staging",
+          "webClientId": "5tftsj0k47nnva015dutm2dj78",
+          "nativeClientId": "5tftsj0k47nnva015dutm2dj78",
+          "identityPoolId": "ap-northeast-1:d4fef3ec-2e9b-4dd7-b90c-4ede6e6e9b89",
+          "identityPoolName": "linegenpov36c4221e2_identitypool_6c4221e2__staging",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::884428965953:role/amplify-amplify2a05e45e42a14-staging-31952-authRole",
+          "authRoleName": "amplify-amplify2a05e45e42a14-staging-31952-authRole",
+          "unauthRoleArn": "arn:aws:iam::884428965953:role/amplify-amplify2a05e45e42a14-staging-31952-unauthRole",
+          "unauthRoleName": "amplify-amplify2a05e45e42a14-staging-31952-unauthRole"
+        }
       }
     }
   }

@@ -19,6 +19,7 @@
     "@types/styled-components": "5.1.25",
     "@types/uuid": "^9.0.1",
     "aws-amplify": "^5.0.16",
+    "aws-amplify-react": "^5.1.43",
     "framer-motion": "^10.0.0",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.2",

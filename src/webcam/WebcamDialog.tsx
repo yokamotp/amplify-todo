@@ -91,7 +91,8 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
     return (
         <WindowSizedDialog>
             <WindowSizedDialogInner>
-                <Webcam ref={webcamRef} width={width} height={height} />
+                <Webcam ref={webcamRef} width={100} height={100} />
+                {/* <Webcam ref={webcamRef} width={width} height={height} /> */}
                 <IconButton
                     aria-label='Take Photo'
                     colorScheme='red'
