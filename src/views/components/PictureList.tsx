@@ -37,9 +37,7 @@ const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
                             marginBottom={1}
                             icon={<AiOutlineCamera />}
                             onClick={() => setOpenDialog(true)}
-
                         />
-
                         <IconButton
                             aria-label='Take Photo'
                             colorScheme='teal'

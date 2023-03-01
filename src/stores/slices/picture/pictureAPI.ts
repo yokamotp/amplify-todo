@@ -1,8 +1,8 @@
 import { DataStore } from 'aws-amplify';
 import { Picture } from '../../../models';
 
-//Todoの作成
-export const createTodoApi = async (data: { src: string }) => {
+//pictureの作成
+export const createPictureApi = async (data: { src: string }) => {
     const { src } = data;
     try {
         await DataStore.save(
@@ -15,27 +15,27 @@ export const createTodoApi = async (data: { src: string }) => {
     }
 }
 
-export const fetchTodoListApi = async () => {
+export const fetchPictureListApi = async () => {
     try {
         //一覧取得処理の実行
-        const todoList = await DataStore.query(Picture);
-        return todoList;
+        const pictureList = await DataStore.query(Picture);
+        return pictureList;
 
     } catch (error) {
         throw error;
     }
 };
 
-// todoの編集
-export const updateTodoApi = async (data: { id: string; isDone: boolean }) => {
-    const { id, isDone } = data;
+// pictureの編集
+export const updatePictureApi = async (data: { id: string; src: string }) => {
+    const { id, src } = data;
     try {
         //変更元のデータを取得する
         const original = await DataStore.query(Picture, id);
 
         //originalがundefinedの場合
         if (!original) {
-            alert('指定されたTodoはデータベース上に存在しません。');
+            alert('指定された写真はないとよ〜。');
             return;
         }
         //編集処理の実行
@@ -50,19 +50,19 @@ export const updateTodoApi = async (data: { id: string; isDone: boolean }) => {
     }
 }
 
-// todoの削除
-export const deleteTodoApi = async (data: { id: string }) => {
+// pictureの削除
+export const deletePictureApi = async (data: { id: string }) => {
     const { id } = data;
     try {
-        //削除するTodoを取得
-        const deleteTodo = await DataStore.query(Picture, id);
-        if (!deleteTodo) {
-            alert('指定されたTodoはデータベース上に存在しません。');
+        //削除するPictureを取得
+        const deletePicture = await DataStore.query(Picture, id);
+        if (!deletePicture) {
+            alert('指定された写真はないとよ〜。');
             return;
         }
 
         //削除処理の実行
-        await DataStore.delete(deleteTodo);
+        await DataStore.delete(deletePicture);
 
     } catch (error) {
         throw (error);
