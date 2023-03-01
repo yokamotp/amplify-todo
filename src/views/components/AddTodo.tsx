@@ -18,7 +18,6 @@ const AddTodo: React.VFC = () => {
     }
 
     return (
-        // <Box display='felx' justifyContent='center'>
         <form onSubmit={handleSubmit(onSubmit)}>
             <Flex direction='row'>
                 <FormControl

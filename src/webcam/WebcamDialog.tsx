@@ -5,6 +5,8 @@ import useWindowSize from "./useWindowSize";
 import useWindowEvent from "./useWindowEvent";
 import { AiOutlineCamera } from "react-icons/ai";
 import { IconButton } from "@chakra-ui/react";
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { createPictureApi } from '../../src/stores/slices/picture/pictureAPI'
 
 const WindowSizedDialog = styled.div`
   position: fixed;
@@ -55,6 +57,14 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
         setIsLandscape(false);
     };
 
+    type Inputs = {
+        id: string,
+        src: string,
+    }
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await createPictureApi(data);
+    }
+
     useWindowEvent("orientationchange", orientationChanged, []);
 
     const capture = () => {
@@ -66,6 +76,7 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
             return;
         }
         setImageSrc(newImageSrc);
+        onSubmit({ id: "0011", src: newImageSrc });
         onClose();
     };
 
