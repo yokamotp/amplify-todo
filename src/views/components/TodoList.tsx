@@ -48,6 +48,7 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
         }
     }, [dispatch])
 
+    console.log("撮影データ：" + imageSrc)
 
     return (
         <Flex flexDir='column' w='100%'>

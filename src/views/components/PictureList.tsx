@@ -5,7 +5,7 @@ import { AiOutlineCamera, AiOutlinePicture } from 'react-icons/ai'
 
 type Props = {
     id: string;
-    setOpenDialog: any;
+    setOpenDialog: (openDialog: boolean) => void;
 }
 
 const PictureList: React.VFC<Props> = ({ id, setOpenDialog }) => {

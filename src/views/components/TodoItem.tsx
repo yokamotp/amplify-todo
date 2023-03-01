@@ -13,7 +13,7 @@ type Props = {
     id: string;
     content: string;
     isDone: boolean;
-    setOpenDialog: any;
+    setOpenDialog: (openDialog: boolean) => void;
 }
 
 const TodoItem: React.VFC<Props> = ({ id, content, isDone, setOpenDialog }) => {

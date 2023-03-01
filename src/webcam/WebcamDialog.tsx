@@ -70,7 +70,7 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
             return;
         }
         setImageSrc(newImageSrc);
-        console.log("撮影画像のSrc" + newImageSrc)
+        // console.log("撮影画像のSrc" + newImageSrc)
         onClose();
     };
 
