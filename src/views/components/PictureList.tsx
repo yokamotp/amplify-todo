@@ -5,9 +5,10 @@ import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 type Props = {
     id: string;
+    isDoneList: boolean;
 }
 
-const PictureList: React.VFC<Props> = ({ id }) => {
+const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
 
     const [openDialog, setOpenDialog] = useState(false);
     const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -26,24 +27,26 @@ const PictureList: React.VFC<Props> = ({ id }) => {
                     onClose={() => setOpenDialog(false)}
                     setImageSrc={setImageSrc}
                 />
-                <Flex direction='column'
-                    marginRight={1}>
-                    <IconButton
-                        aria-label='Take Photo'
-                        colorScheme='blue'
-                        size='lg'
-                        marginBottom={1}
-                        icon={<AiOutlineCamera />}
-                        onClick={() => setOpenDialog(true)}
+                {!isDoneList && (
+                    <Flex direction='column'
+                        marginRight={1}>
+                        <IconButton
+                            aria-label='Take Photo'
+                            colorScheme='blue'
+                            size='lg'
+                            marginBottom={1}
+                            icon={<AiOutlineCamera />}
+                            onClick={() => setOpenDialog(true)}
 
-                    />
+                        />
 
-                    <IconButton
-                        aria-label='Take Photo'
-                        colorScheme='teal'
-                        size='lg'
-                        icon={<AiOutlinePicture />} />
-                </Flex>
+                        <IconButton
+                            aria-label='Take Photo'
+                            colorScheme='teal'
+                            size='lg'
+                            icon={<AiOutlinePicture />} />
+                    </Flex>
+                )}
                 <HStack
                     align='stretch'
                     w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}

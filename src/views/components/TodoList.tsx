@@ -78,7 +78,7 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
                                     return item.isDone === isDoneList;
                                 })
                                 .map((item) => {
-                                    return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} />
+                                    return <TodoItem key={item.id} id={item.id} content={item.content} isDone={item.isDone} isDoneList={isDoneList} />
                                 })
                         )}
                 </VStack>
