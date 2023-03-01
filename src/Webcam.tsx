@@ -22,7 +22,6 @@ export interface WebcamHandles {
 // 起動するカメラの性能に依存するので、このpx値で撮影されるとは限らない
 const IDEAL_VIDEO_WIDTH = 1920;
 
-
 const Webcam: ForwardRefRenderFunction<WebcamHandles, Props> = (
     { width, height },
     ref
