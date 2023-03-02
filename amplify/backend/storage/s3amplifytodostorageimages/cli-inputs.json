@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3amplifytodostorageimages",
+  "bucketName": "amplifytodo-storage-images",
+  "policyUUID": "acc36afc",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "READ",
+    "CREATE_AND_UPDATE",
+    "DELETE"
+  ]
+}

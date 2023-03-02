@@ -120,5 +120,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "s3amplifytodostorageimages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }

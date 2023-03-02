@@ -3,6 +3,12 @@ import React, { useState } from 'react'
 import { AiOutlineCamera, AiOutlinePicture } from 'react-icons/ai'
 import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
+import { useEffect } from 'react';
+import { Storage } from "aws-amplify"
+type Image = {
+    src: string;
+}
+
 type Props = {
     id: string;
     isDoneList: boolean;
@@ -12,6 +18,30 @@ const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
 
     const [openDialog, setOpenDialog] = useState(false);
     const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+    //画像取得
+    const [imgList, setImgList] = useState<Image[]>([]);
+
+    useEffect(() => {
+        loadImage();
+    }, []);
+
+    async function loadImage() {
+        console.log('load image開始')
+        const imgs: Image[] = [];
+        const result = await Storage.list('', { level: 'public' });
+        console.log(result)
+        for (let i = 0; i < result.results.length; i++) {
+            console.log("image取得成功")
+            const url = await Storage.get(result.results[i].key!, { level: 'public' });
+            const img: Image = {
+                src: url,
+            };
+            imgs.push(img);
+        }
+        setImgList(imgs);
+    }
+    //ここまで
 
     return (
         <Box
@@ -51,14 +81,26 @@ const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
                     overflow='scroll'
                     spacing='4px'
                 >
-                    {imageSrc && (
+                    {imgList && imgList.map((item) => {
+                        return (
+                            <Image
+                                boxSize='100px'
+                                objectFit='cover'
+                                src={item.src}
+                                alt='Dan Abramov'
+                            />
+                        )
+                    })
+
+                    }
+                    {/* {imageSrc && (
                         <Image
                             boxSize='100px'
                             objectFit='cover'
                             src={imageSrc}
                             alt='Dan Abramov'
                         />
-                    )}
+                    )} */}
                     <Image
                         boxSize='100px'
                         objectFit='cover'

@@ -7,6 +7,7 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { IconButton } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { createPictureApi } from '../../src/stores/slices/picture/pictureAPI'
+import { Storage } from 'aws-amplify';
 
 const WindowSizedDialog = styled.div`
   position: fixed;
@@ -65,9 +66,11 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
         await createPictureApi(data);
     }
 
+
+
     useWindowEvent("orientationchange", orientationChanged, []);
 
-    const capture = () => {
+    const capture = async () => {
         if (!webcamRef.current) {
             return;
         }
@@ -76,7 +79,11 @@ const WebcamDialog = ({ open, onClose, setImageSrc }: Props) => {
             return;
         }
         setImageSrc(newImageSrc);
-        onSubmit({ id: "0011", src: newImageSrc });
+        console.log("S3保存開始")
+        const result = await Storage.put("test.txt", "Hello");
+        // onSubmit({ id: "0011", src: newImageSrc });
+        console.log("S3保存完了")
+
         onClose();
     };
 
