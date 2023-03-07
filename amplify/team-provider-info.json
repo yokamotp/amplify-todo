@@ -29,6 +29,9 @@
           "unauthRoleArn": "arn:aws:iam::884428965953:role/amplify-amplify2a05e45e42a14-staging-31952-unauthRole",
           "unauthRoleName": "amplify-amplify2a05e45e42a14-staging-31952-unauthRole"
         }
+      },
+      "storage": {
+        "s3amplifytodostorageimages": {}
       }
     }
   }
