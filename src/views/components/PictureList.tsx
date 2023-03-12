@@ -11,6 +11,7 @@ import { API } from 'aws-amplify';
 import ImageUploadBox from './ImageUpload';
 //
 
+import fetchS3Objects from '../src/read_s3_images';
 
 type Image = {
     src: string;
@@ -50,41 +51,6 @@ const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
         setImgList(imgs);
     }
     //ここまで
-
-    // //画像アップロード
-    // async function onChange(e) {
-    //     if (!e.target.files[0]) return
-    //     const file = e.target.files[0];
-    //     setFormData({ ...formData, image: file.name });
-    //     await Storage.put(file.name, file);
-    //     fetchNotes();
-    // }
-
-    // async function fetchNotes() {
-    //     const apiData = await API.graphql({ query: listNotes });
-    //     const notesFromAPI = apiData.data.listNotes.items;
-    //     await Promise.all(notesFromAPI.map(async note => {
-    //         if (note.image) {
-    //             const image = await Storage.get(note.image);
-    //             note.image = image;
-    //         }
-    //         return note;
-    //     }))
-    //     setNotes(apiData.data.listNotes.items);
-    // }
-
-    // async function createNote() {
-    //     if (!formData.name || !formData.description) return;
-    //     await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-    //     if (formData.image) {
-    //         const image = await Storage.get(formData.image);
-    //         formData.image = image;
-    //     }
-    //     setNotes([...notes, formData]);
-    //     setFormData(initialFormState);
-    // }
-
-    // //ここまで
 
     return (
         <Box
