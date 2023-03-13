@@ -31,15 +31,15 @@ const root = createRoot(container);
 
 root.render(
     <React.StrictMode>
-        <Authenticator>
-            {({ signOut, user }) => (
-                <Provider store={store}>
-                    <ChakraProvider>
-                        <App />
-                    </ChakraProvider>
-                </Provider>
-            )}
-        </Authenticator>
+        {/* <Authenticator> */}
+        {/* {({ signOut, user }) => ( */}
+        <Provider store={store}>
+            <ChakraProvider>
+                <App />
+            </ChakraProvider>
+        </Provider>
+        {/* )} */}
+        {/* </Authenticator> */}
     </React.StrictMode>
 );
 
