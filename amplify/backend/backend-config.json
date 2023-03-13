@@ -22,7 +22,105 @@
       "service": "AppSync"
     }
   },
-  "auth": {},
+  "auth": {
+    "amplifytodoc175f33e": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_amplifytodoc175f33e_allowUnauthenticatedIdentities": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_authRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_authRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_identityPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_identityPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_unauthRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_unauthRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodoc175f33e_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodoc175f33e"
+        }
+      ]
+    }
+  },
   "storage": {
     "s3amplifytodostorageimages": {
       "dependsOn": [],
