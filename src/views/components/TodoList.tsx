@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 import { deleteTodoRealTime, fetchTodoListAsync, fetchTodoRealTime, selectTodoList, updateTodoRealTime } from '../../stores/slices/todo/todoSlices';
 import { DataStore } from 'aws-amplify';
 import { Todo } from '../../models';
-import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 type Props = {
     title: string;
@@ -52,11 +51,6 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
 
     return (
         <Flex flexDir='column' w='100%'>
-            <WebcamDialog
-                open={openDialog}
-                onClose={() => setOpenDialog(false)}
-                setImageSrc={setImageSrc}
-            />
             <Center mb={2}>
                 <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
                     <Flex>
