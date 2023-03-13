@@ -1,28 +1,9 @@
 // import  from '@chakra-ui/icon/dist/icon';
-import {
-    Flex,
-    Text,
-    Icon,
-    Container,
-    useDisclosure,
-    Button,
-    IconButton,
-} from "@chakra-ui/react";
+import { Flex, Text, Icon, Card } from "@chakra-ui/react";
 import { useState } from "react";
-import {
-    RiCheckboxBlankCircleLine,
-    RiCheckboxCircleFill,
-    RiMenuLine,
-    RiCloseLine,
-    RiChatNewLine,
-    RiChatNewFill,
-} from "react-icons/ri";
-import { BsFillTrashFill } from "react-icons/bs";
-// import { deleteTodo, updateTodo } from '../../stores/slices/todo/todoSlices';
-// import { useAppDispatch } from '../../stores/hooks';
+import { RiMenuLine, RiChatNewLine, RiChatNewFill } from "react-icons/ri";
 import { deleteTodoApi, updateTodoApi } from "../../stores/slices/todo/todoAPI";
 import PictureList from "./PictureList";
-import TodoModalMenu from "./TodoModalMenu";
 
 const TodoItem = ({ id, content, isDone, isDoneList }) => {
     // const dispatch = useAppDispatch();
@@ -48,16 +29,10 @@ const TodoItem = ({ id, content, isDone, isDoneList }) => {
 
     //Toggle用
     const [isShowText, setShowText] = useState(false);
-
-    const { getDisclosureProps, getButtonProps } = useDisclosure();
-
-    const buttonProps = getButtonProps();
-    const disclosureProps = getDisclosureProps();
-    //ここまで
-
     return (
         <>
-            <Container borderBottom="2px" borderColor="gray.300">
+            <Card maxW="sm">
+                {/* <Container borderBottom="2px" borderColor="gray.300"> */}
                 <Flex w="100%" align="center" justify="space-between">
                     <Flex align="center">
                         <Icon
@@ -73,7 +48,6 @@ const TodoItem = ({ id, content, isDone, isDoneList }) => {
                     </Flex>
 
                     <Flex>
-                        {/* <Button {...buttonProps}>Toggle Me</Button> */}
                         <Icon
                             as={isShowText ? RiChatNewFill : RiChatNewLine}
                             color="teal"
@@ -85,14 +59,18 @@ const TodoItem = ({ id, content, isDone, isDoneList }) => {
                         />
                     </Flex>
                 </Flex>
-            </Container>
-            {isShowText && (
-                <Text mt={4}>
-                    This text is being visibly toggled hidden and shown by the
-                    button.
-                </Text>
-            )}
-            <PictureList id={id} isDoneList={isDoneList}></PictureList>
+                {isShowText && (
+                    <Text mt={4}>
+                        This text is being visibly toggled hidden and shown by
+                        the button.
+                    </Text>
+                )}
+                <PictureList
+                    ctureList
+                    id={id}
+                    isDoneList={isDoneList}
+                ></PictureList>
+            </Card>
         </>
     );
 };

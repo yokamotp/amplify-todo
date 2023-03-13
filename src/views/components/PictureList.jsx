@@ -1,10 +1,12 @@
-import { Box, Flex, HStack, IconButton, Image } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, Image, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { AiOutlineCamera } from "react-icons/ai";
+import { AiOutlineCamera, AiOutlinePicture } from "react-icons/ai";
 import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 import { useEffect } from "react";
 import { Storage } from "aws-amplify";
+
+import liff from "@line/liff";
 
 //画像アップロード
 import { API } from "aws-amplify";
@@ -34,10 +36,8 @@ const PictureList = ({ id, isDoneList }) => {
     }, []);
 
     async function loadImage() {
-        console.log("load image開始");
         const imgs = [];
         const result = await Storage.list("", { level: "public" });
-        console.log(result);
         for (let i = 0; i < result.results.length; i++) {
             console.log("image取得成功");
             const url = await Storage.get(result.results[i].key, {
@@ -52,6 +52,14 @@ const PictureList = ({ id, isDoneList }) => {
         setImgList(imgs);
     }
     //ここまで
+
+    const onCameraRoleHandler = () => {
+        // openWindow call
+        liff.openWindow({
+            url: "https://line.me/R/nv/cameraRoll/multi",
+            external: false,
+        });
+    };
 
     return (
         <Box
@@ -78,7 +86,13 @@ const PictureList = ({ id, isDoneList }) => {
                             icon={<AiOutlineCamera />}
                             onClick={() => setOpenDialog(true)}
                         />
-                        <ImageUploadBox></ImageUploadBox>
+                        <IconButton
+                            aria-label="Camera Role"
+                            colorScheme="teal"
+                            onClick={onCameraRoleHandler}
+                            size="lg"
+                            icon={<AiOutlinePicture />}
+                        />
                     </Flex>
                 )}
                 <HStack
