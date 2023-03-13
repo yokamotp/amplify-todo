@@ -21,5 +21,111 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     }
+  },
+  "auth": {
+    "amplifytodo": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_amplifytodo_allowUnauthenticatedIdentities": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_authRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_authRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_identityPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_identityPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_unauthRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_unauthRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifytodo_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifytodo"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "s3amplifytodostorageimages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }

@@ -1,6 +1,17 @@
-type Todo @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  content: String!
-  isDone: Boolean!
+type Picture @model @auth(rules: [{ allow: public }]) {
+    id: ID!
+    src: String!
 }
- 
+
+type Todo @model @auth(rules: [{ allow: public }]) {
+    id: ID!
+    content: String!
+    isDone: Boolean!
+}
+
+type Note @model {
+    id: ID!
+    name: String!
+    description: String
+    image: String
+}
