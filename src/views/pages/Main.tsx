@@ -16,12 +16,11 @@ const Main = () => {
                     <TabPanel>
                         <TodoList title='工程' isDoneList={false} defaultDispOfList={true} />
                         <AddTodo />
-                        <TodoList title='DoneList' isDoneList={true} defaultDispOfList={false} />
+
                     </TabPanel>
                     <TabPanel>
-                        <TodoList title='工程' isDoneList={false} defaultDispOfList={true} />
-                        <AddTodo />
-                        <TodoList title='DoneList' isDoneList={true} defaultDispOfList={false} />
+
+
                     </TabPanel>
                 </TabPanels>
             </Tabs>
