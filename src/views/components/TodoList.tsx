@@ -52,21 +52,21 @@ const TodoList: React.VFC<Props> = ({ title, defaultDispOfList, isDoneList }) =>
 
     return (
         <Flex flexDir='column' w='100%'>
-            <Center mb={2}>
-                <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
+            {/* <Center mb={2}> */}
+            {/* <Heading onClick={() => setDispTodoList(!isDispTodoList)}>
                     <Flex>
                         {title}
                     </Flex>
-                </Heading>
-            </Center>
+                </Heading> */}
+            {/* </Center> */}
             {isDispTodoList && (
-                <VStack divider={<StackDivider borderColor='gray.200' />}
+                <VStack
                     align='stretch'
-                    w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}
-                    border='2px'
-                    borderColor='gray.300'
-                    borderRadius='md'
-                    p={4}
+                    // w={{ base: '90vw', sm: '80vw', md: '70vw', lg: '60vw' }}
+                    // border='2px'
+                    // borderColor='gray.300'
+                    // borderRadius='md'
+                    // p={4}
                     maxH='65vh'
                     overflow='scroll'
                 >

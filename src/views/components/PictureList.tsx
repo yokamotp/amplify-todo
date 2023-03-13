@@ -54,11 +54,11 @@ const PictureList: React.VFC<Props> = ({ id, isDoneList }) => {
 
     return (
         <Box
-            p={2}
-            color='gray.100'
-            borderRadius='md'
+            // p={2}
+            // color='gray.100'
+            // borderRadius='md'
             maxH='100vh'
-            border='2px'
+        // border='2px'
         >
             <Flex direction='row'>
                 <WebcamDialog
