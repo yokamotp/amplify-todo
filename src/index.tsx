@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './stores/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+// import './index.css';
 import { ChakraProvider } from '@chakra-ui/react'
 import { Amplify } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';

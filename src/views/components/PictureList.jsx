@@ -1,7 +1,6 @@
 import { Box, Flex, HStack, IconButton, Image, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { AiOutlineCamera, AiOutlinePicture } from "react-icons/ai";
-import WebcamDialog from "../../../src/webcam/WebcamDialog";
 
 import { useEffect } from "react";
 import { Storage } from "aws-amplify";
@@ -10,10 +9,6 @@ import liff from "@line/liff";
 
 //画像アップロード
 import { API } from "aws-amplify";
-import ImageUploadBox from "./ImageUpload";
-//
-
-import fetchS3Objects from "../src/read_s3_images";
 
 // type Image = {
 //     src: string;
@@ -70,12 +65,6 @@ const PictureList = ({ id, isDoneList }) => {
             // border='2px'
         >
             <Flex direction="row">
-                <WebcamDialog
-                    open={openDialog}
-                    onClose={() => setOpenDialog(false)}
-                    setImageSrc={setImageSrc}
-                />
-
                 {!isDoneList && (
                     <Flex direction="column" marginRight={1}>
                         <IconButton
